@@ -36,6 +36,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         super();
         targetTimespan = TARGET_TIMESPAN;
         maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
+        //maxTarget = Utils.decodeCompactBits(0x3d00ffffL);
 
         // WHAT DO WE ENTER HERE ????
         dumpedPrivateKeyHeader = 128;
@@ -49,8 +50,8 @@ public class MainNetParams extends AbstractBitcoinNetParams {
 
         // WHAT DO WE ENTER HERE >>?????
 
-        bip32HeaderP2PKHpub = 0x0468acde; // The 4 byte header that serializes in base58 to "xpub".
-        bip32HeaderP2PKHpriv = 0x0468feb1; // The 4 byte header that serializes in base58 to "xprv"
+        bip32HeaderP2PKHpub = 0x0768acde; // The 4 byte header that serializes in base58 to "xpub".
+        bip32HeaderP2PKHpriv = 0x0768feb1; // The 4 byte header that serializes in base58 to "xprv"
 
         //bip32HeaderP2WPKHpub = 0x04b24746; // The 4 byte header that serializes in base58 to "zpub".
         //bip32HeaderP2WPKHpriv = 0x04b2430c; // The 4 byte header that serializes in base58 to "zprv"
@@ -65,6 +66,11 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         id = ID_MAINNET;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
+
+        //String x= genesisBlock.toString();
+        byte[] x = genesisBlock.bitcoinSerialize();
+        String X1 = Utils.HEX.encode(x);
+
         checkState(genesisHash.equals("480ecc7602d8989f32483377ed66381c391dda6215aeef9e80486a7fd3018075"),
                 genesisHash);
 
